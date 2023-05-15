@@ -5,8 +5,8 @@ import axios from 'axios';
 
 
 const App = () => {
-    const [chartOptions, setChartOptions] = useState(null);
-    const [csvData, setCsvData] = useState(null);
+    const [chart, setChart] = useState([]);
+    const [csv, setCsv] = useState([]);
 
     const clickhandler = async () => {
       const response = await axios.get('https://www.terriblytinytales.com/test.txt');
@@ -28,7 +28,7 @@ const App = () => {
         const labels = sortedFrequencies.map(([word, ]) => word); 
         const values = sortedFrequencies.map(([, count]) => count); 
         console.log(labels, values);
-        setChartOptions({
+        setChart({
             chart: {
                 type: 'bar',
                 height: 400,
@@ -44,17 +44,17 @@ const App = () => {
             },
         });
 
-        setCsvData(labels.map((label, index) => 
+        setCsv(labels.map((label, index) => 
         ({ label, value: values[index] })));
     };
 
     return (
         <div >
             <button className='btn-api ' onClick={clickhandler} >Submit For Data</button>
-            {chartOptions && (
+            {chart && (
                 <>
-                    <Chart options={chartOptions} series={chartOptions.series} style={{ color: "#eb8334"}}  type="bar" height={500} />
-                    <button className='btn-api'><CSVLink style={{ color: 'black', textDecoration: "none" }} data={csvData} filename={'histogram.csv'}>Export</CSVLink></button>
+                    <Chart options={chart} series={chart.series} style={{ color: "#eb8334"}}  type="bar" height={500} />
+                    <button className='btn-api'><CSVLink style={{ color: 'black', textDecoration: "none" }} data={csv} filename={'histogram.csv'}>Export</CSVLink></button>
                 </>
             )}
         </div>
