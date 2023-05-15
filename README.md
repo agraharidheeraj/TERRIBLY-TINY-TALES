@@ -1,9 +1,9 @@
 # TERRIBLY TINY TALES Project
  Project Details - Fetch The Data and Show in Histogram 
 
-## [Live Project Link] 
- monumental-rabanadas-3725b2.netlify.app
-In the project directory, you can run:
+## [Live Project Link] - monumental-rabanadas-3725b2.netlify.app
+
+## In the project directory, you can run:
 
 ### `npm start`
 
